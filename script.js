@@ -57,18 +57,18 @@ const ComputerPlayer = (symbol) => {
     };
 
     const minimax = (board, player) => {
-        console.log(`minimax(board, ${player})`);
+        // console.log(`minimax(board, ${player})`);
 
         const availableMoves = Gameboard.getAvailableMoves(board);
 
         if (GameFlow.isGameWon(board, getSymbol())) {
-            console.log('Game is won by computer');
+            // console.log('Game is won by computer');
             return { score: 10 };
         } else if (GameFlow.isGameWon(board, GameFlow.getOpponent(getSymbol()))) {
-            console.log('Game is won by opponent');
+            // console.log('Game is won by opponent');
             return { score: -10 };
         } else if (availableMoves.length === 0) {
-            console.log('Game is a tie');
+            // console.log('Game is a tie');
             return { score: 0 };
         }
 
@@ -79,8 +79,8 @@ const ComputerPlayer = (symbol) => {
             move.index = availableMoves[i];
             board[availableMoves[i]] = player;
 
-            console.log(`Trying move ${availableMoves[i]} for ${player}`);
-            console.log('Current board:', board);
+            // console.log(`Trying move ${availableMoves[i]} for ${player}`);
+            // console.log('Current board:', board);
 
             if (player === getSymbol()) {
                 const result = minimax(board, GameFlow.getOpponent(player));
@@ -92,8 +92,8 @@ const ComputerPlayer = (symbol) => {
 
             board[availableMoves[i]] = ''; 
 
-            console.log(`Move ${availableMoves[i]} for ${player} has score: ${move.score}`);
-            console.log('Board after move:', board);
+            // console.log(`Move ${availableMoves[i]} for ${player} has score: ${move.score}`);
+            // console.log('Board after move:', board);
 
             moves.push(move);
         }
@@ -117,8 +117,8 @@ const ComputerPlayer = (symbol) => {
             }
         }
 
-        console.log(`Best move for ${player} has score: ${moves[bestMove].score}`);
-        console.log('Best move:', moves[bestMove].index);
+        // console.log(`Best move for ${player} has score: ${moves[bestMove].score}`);
+        // console.log('Best move:', moves[bestMove].index);
 
         return moves[bestMove];
     };
